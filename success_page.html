@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1 id="typewriter-text"></h1>
+
+  <audio autoplay>
+    <source src="audio_atividade_ingles.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <script>
+    var text = "If you were sleeping and woke up, you managed to escape my CLAWS. But don't forget, you haven't escaped the room yet.";
+    var index = 0;
+    var speed = 50;
+
+    function type() {
+      var element = document.getElementById('typewriter-text');
+      element.innerHTML += text.charAt(index);
+      index++;
+      if (index < text.length) {
+        setTimeout(type, speed);
+      }
+    }
+
+    document.getElementById('typewriter-text').classList.add('typing');
+
+    window.onload = function() {
+      type();
+    };
+  </script>
+</body>
+</html>

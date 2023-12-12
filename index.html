@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <form id="quizForm">
+      <h1 id="typewriter-text"></h1>
+      <input type="text" name="answer" id="answer">
+      <input type="submit" value="Submit" id="submitButton">
+    </form>
+  </div>
+
+  <audio id="backgroundAudio" src="audio_atividade_ingles.mp3" loop></audio>
+
+  <video id="incorrectVideo" width="560" height="315" style="display:none">
+    <source src="susto.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var answer = document.getElementById('answer').value.toLowerCase();
+
+      if (answer === 'sleep' || answer === 'SLEEP' || answer === 'Sleep') {
+        window.location.href = 'success_page.html';
+      } else {
+        window.location.href = 'error_page.html';
+      }
+    });
+  </script>
+  <script>
+    var text = "I am the place where you can be killed without dying. What do you need to do to get to that place?";
+    var index = 0;
+    var speed = 50;
+
+    function type() {
+      var element = document.getElementById('typewriter-text');
+      element.innerHTML += text.charAt(index);
+      index++;
+      if (index < text.length) {
+        setTimeout(type, speed);
+      }
+    }
+
+    document.getElementById('typewriter-text').classList.add('typing');
+
+    window.onload = function() {
+      type();
+    };
+  </script>
+
+</body>
+</html>
